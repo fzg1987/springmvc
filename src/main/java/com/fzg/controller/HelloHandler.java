@@ -17,7 +17,7 @@ public class HelloHandler {
     @RequestMapping("/restful/{id}/{name}")
     public String restful(@PathVariable("id") Integer id,@PathVariable("name") String name){
         System.out.println(id + "-" + name);
-        return "index";
+        return "redirect:/index.jsp";
     }
 
     @RequestMapping("/cookie")
