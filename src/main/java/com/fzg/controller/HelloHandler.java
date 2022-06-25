@@ -1,6 +1,7 @@
 package com.fzg.controller;
 
 import com.fzg.entity.User;
+import com.fzg.entity.UserList;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
@@ -26,8 +27,36 @@ public class HelloHandler {
         return "index";
     }
     @RequestMapping(value = "/add",method = RequestMethod.POST)
+    @ResponseBody
     public String add(User user){
         System.out.println(user);
-        return "index";
+//        return "index";
+        return user.toString();
+    }
+
+    @RequestMapping("/arrayType")
+    @ResponseBody
+    public String ArrayType(String[] names){
+        StringBuffer stringBuffer = new StringBuffer();
+        for (String s : names) {
+            stringBuffer.append(s).append(" ");
+        }
+        return "names:" + stringBuffer.toString();
+    }
+    @RequestMapping("/listType")
+    @ResponseBody
+    public String ListType(UserList userList){
+        StringBuffer stringBuffer = new StringBuffer();
+        for(User user:userList.getUsers()){
+            stringBuffer.append(user).append(" ");
+        }
+        return "UserList:" + stringBuffer.toString();
+    }
+    @RequestMapping("/jsonType")
+    @ResponseBody
+    public User jsonType(@RequestBody User user){
+        System.out.println(user);
+        user.setId(2);
+        return user;
     }
 }
