@@ -18,7 +18,7 @@ public class HelloHandler {
     @RequestMapping("/restful/{id}/{name}")
     public String restful(@PathVariable("id") Integer id,@PathVariable("name") String name){
         System.out.println(id + "-" + name);
-        return "index";
+        return "redirect:/index.jsp";
     }
 
     @RequestMapping("/cookie")
@@ -58,5 +58,16 @@ public class HelloHandler {
         System.out.println(user);
         user.setId(2);
         return user;
+    }
+    @RequestMapping("/baseType")
+    @ResponseBody
+    public String baseType(int id){
+        return "id:"+id;
+    }
+
+    @RequestMapping("/packageType")
+    @ResponseBody
+    public String packageType(@RequestParam(value="id", required = true,defaultValue = "0") Integer id){
+        return "id:" + id;
     }
 }
