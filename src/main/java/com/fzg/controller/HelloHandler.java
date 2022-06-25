@@ -30,4 +30,15 @@ public class HelloHandler {
         System.out.println(user);
         return "index";
     }
+    @RequestMapping("/baseType")
+    @ResponseBody
+    public String baseType(int id){
+        return "id:"+id;
+    }
+
+    @RequestMapping("/packageType")
+    @ResponseBody
+    public String packageType(@RequestParam(value="id", required = true,defaultValue = "0") Integer id){
+        return "id:" + id;
+    }
 }
