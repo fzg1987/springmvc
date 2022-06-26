@@ -18,8 +18,18 @@
         <!-- 后缀 -->
         <property name="suffix" value=".jsp"/>
     </bean>
+    <bean id="conversionService" class="org.springframework.context.support.ConversionServiceFactoryBean">
+        <property name="converters">
+            <list>
+                <bean class="com.fzg.converter.DateConverter">
+                    <constructor-arg type="java.lang.String" value="yyy-MM-dd"/>
+                </bean>
+                <bean class="com.fzg.converter.StudentConverter"/>
+            </list>
+        </property>
+    </bean>
 
-    <mvc:annotation-driven>
+    <mvc:annotation-driven conversion-service="conversionService">
         <!-- 消息转换器 -->
         <mvc:message-converters>
             <bean class="org.springframework.http.converter.StringHttpMessageConverter">
