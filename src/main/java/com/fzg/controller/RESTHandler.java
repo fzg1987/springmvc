@@ -25,6 +25,9 @@ public class RESTHandler {
         return "已接收到PUT请求";
     }
     @DeleteMapping("/delete")
-    public void delete(){
+    @ResponseBody
+    public String delete(HttpServletResponse response){
+        response.setCharacterEncoding("UTF-8");
+        return "已接收到DELETE请求";
     }
 }

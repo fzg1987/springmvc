@@ -11,9 +11,16 @@
     <title>Title</title>
 </head>
 <body>
+
 <form action="/rest/update" method="post">
     <input type="hidden" name="_method" value="PUT" />
-    <input type="submit" value="提交" />
+    <input type="submit" value="PUT提交" />
 </form>
+
+<form action="/rest/delete" method="post">
+    <input type="hidden" name="_method" value="DELETE" />
+    <input type="submit" value="DELETE提交" />
+</form>
+
 </body>
 </html>
