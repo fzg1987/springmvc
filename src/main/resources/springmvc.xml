@@ -45,4 +45,19 @@
 <!--    <bean id="studentValidator" class="com.fzg.validation.StudentValidation"/>-->
 
     <mvc:annotation-driven></mvc:annotation-driven>
+
+    <!-- 国际化资源文件 -->
+    <bean id="messageSource" class="org.springframework.context.support.ReloadableResourceBundleMessageSource">
+        <!-- 多语言配置文件放在根路径，以language开头 -->
+        <property name="basename" value="classpath:language"></property>
+        <property name="useCodeAsDefaultMessage" value="true"></property>
+    </bean>
+    <!-- 拦截器 -->
+    <mvc:interceptors>
+        <bean id="localChangeInterceptor" class="org.springframework.web.servlet.i18n.LocaleChangeInterceptor">
+            <property name="paramName" value="lang"></property>
+        </bean>
+    </mvc:interceptors>
+    <!-- 配置SessionLocaleResolver，动态获取Locale对象，存入Session -->
+    <bean id="localeResolver" class="org.springframework.web.servlet.i18n.SessionLocaleResolver"></bean>
 </beans>
