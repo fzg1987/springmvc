@@ -9,7 +9,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 @Controller
 @RequestMapping("/course")
-public class CourseController {
+public class CourseHandler {
     @Autowired
     private CourseRepository courseRepository;
 
